@@ -87,53 +87,98 @@
       chdir: "/opt/mythic"
     become: yes
 
+# Install Listeners
   - name: Install HTTP
     ansible.builtin.command: "/opt/mythic/mythic-cli install github https://github.com/MythicC2Profiles/http -f"
     become: yes
     args:
       chdir: "/opt/mythic"
+  
+  - name: Install SMB
+    ansible.builtin.command: "/opt/mythic/mythic-cli install https://github.com/MythicC2Profiles/smb -f"
+    become: yes
+    args:
+      chdir: "/opt/mythic"
 
+  - name: Install HTTPX
+    ansible.builtin.command: "/opt/mythic/mythic-cli install https://github.com/MythicC2Profiles/httpx -f"
+    become: yes
+    args:
+      chdir: "/opt/mythic"
+    
+  - name: Install TCP
+    ansible.builtin.command: "/opt/mythic/mythic-cli install https://github.com/MythicC2Profiles/tcp -f"
+    become: yes
+    args:
+      chdir: "/opt/mythic"
+
+# Install Agents
   - name: Install Poseidon
     ansible.builtin.command: "/opt/mythic/mythic-cli install github https://github.com/MythicAgents/poseidon -f"
     become: yes
     args:
       chdir: "/opt/mythic"
-
-  - name: Install Apfell
-    ansible.builtin.command: "/opt/mythic/mythic-cli install github https://github.com/MythicAgents/apfell -f"
+  
+  - name: Install Apollo
+    ansible.builtin.command: "/opt/mythic/mythic-cli install github https://github.com/MythicAgents/apollo -f"
     become: yes
     args:
       chdir: "/opt/mythic"
 
-  - name: Install Thanatos
-    ansible.builtin.command: "/opt/mythic/mythic-cli install github https://github.com/MythicAgents/thanatos -f"
+# Install Services
+  - name: Install Forge
+    ansible.builtin.command: "/opt/mythic/mythic-cli install github https://github.com/MythicAgents/forge.git -f"
     become: yes
     args:
       chdir: "/opt/mythic"
 
+  
+# Start Listeners
   - name: Start HTTP
     ansible.builtin.command: "/opt/mythic/mythic-cli start http"
     become: yes
     args:
       chdir: "/opt/mythic"
 
+  - name: Start SMB
+    ansible.builtin.command: "/opt/mythic/mythic-cli start smb"
+    become: yes
+    args:
+      chdir: "/opt/mythic"
+    
+  - name: Start HTTPX
+    ansible.builtin.command: "/opt/mythic/mythic-cli start httpx"
+    become: yes
+    args:
+      chdir: "/opt/mythic"
+  
+  - name: Start TCP
+    ansible.builtin.command: "/opt/mythic/mythic-cli start tcp"
+    become: yes
+    args:
+      chdir: "/opt/mythic"
+
+
+# Start Agents
   - name: Start Poseidon
     ansible.builtin.command: "/opt/mythic/mythic-cli start poseidon"
     become: yes
     args:
       chdir: "/opt/mythic"
 
-  - name: Start Apfell
-    ansible.builtin.command: "/opt/mythic/mythic-cli start apfell"
+  - name: Start Apollo
+    ansible.builtin.command: "/opt/mythic/mythic-cli start apollo"
     become: yes
     args:
       chdir: "/opt/mythic"
 
-  - name: Start Thanatos
-    ansible.builtin.command: "/opt/mythic/mythic-cli start thanatos"
+# Start Services
+  - name: Start Forge
+    ansible.builtin.command: "/opt/mythic/mythic-cli start forge"
     become: yes
     args:
       chdir: "/opt/mythic"
+
 
   - name: Make Mythic available on VPN
     ansible.builtin.command: "./mythic-cli config set mythic_server_bind_localhost_only false"
