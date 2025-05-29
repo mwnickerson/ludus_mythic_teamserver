@@ -95,19 +95,19 @@
       chdir: "/opt/mythic"
   
   - name: Install SMB
-    ansible.builtin.command: "/opt/mythic/mythic-cli install https://github.com/MythicC2Profiles/smb -f"
+    ansible.builtin.command: "/opt/mythic/mythic-cli install github https://github.com/MythicC2Profiles/smb -f"
     become: yes
     args:
       chdir: "/opt/mythic"
 
   - name: Install HTTPX
-    ansible.builtin.command: "/opt/mythic/mythic-cli install https://github.com/MythicC2Profiles/httpx -f"
+    ansible.builtin.command: "/opt/mythic/mythic-cli install github https://github.com/MythicC2Profiles/httpx -f"
     become: yes
     args:
       chdir: "/opt/mythic"
     
   - name: Install TCP
-    ansible.builtin.command: "/opt/mythic/mythic-cli install https://github.com/MythicC2Profiles/tcp -f"
+    ansible.builtin.command: "/opt/mythic/mythic-cli install github https://github.com/MythicC2Profiles/tcp -f"
     become: yes
     args:
       chdir: "/opt/mythic"
